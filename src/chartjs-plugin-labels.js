@@ -211,9 +211,15 @@
           label = this.options.images[index] ? this.loadImage(this.options.images[index]) : '';
           break;
         case 'percentage':
-        default:
-          label = this.getPercentage(dataset, element, index) + '%';
+          if (typeof percentage !== 'undefined') {
+            percentage = this.getPercentage(view, dataset, i);
+            text = percentage + '%';
+          } else {
+            text = '';
+          }
           break;
+        default:
+          text = '';
       }
     }
     if (typeof label === 'object') {
